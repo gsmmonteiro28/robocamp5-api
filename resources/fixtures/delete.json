@@ -1,0 +1,10 @@
+{
+    "title": "Sega Saturno",
+    "category": "Consoles",
+    "price": "299.99",
+    "description": "5º Geração.",
+    "producers": [
+        "sega"
+    ],
+    "cover": "Sega.jpg"
+}

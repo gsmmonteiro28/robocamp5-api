@@ -1,0 +1,10 @@
+{
+    "title": "Neo Geo",
+    "category": "Consoles",
+    "price": "299.99",
+    "description": "Um jogo muito divertido.",
+    "producers": [
+        "NeoGeo"
+    ],
+    "cover": "NeoGeo.jpg"
+}

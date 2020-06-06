@@ -1,42 +1,25 @@
 ***Settings***
-Documentation           POST /PRODUCT
-...                     Teste do cadastro de produtos cosumindo API
+Documentation           POST /AUTH
+...                     Teste de serviço de autorização (Autentication Token)
 
-Resource            ../resources/services.robot
+Resource            ../../resources/services.robot
+
+
 
 ***Test Cases***
-Create a New Product
-    ${token}            Auth Token  ${user_email}  ${user_pass}
-    ${payload}          Get Json  dk2.json
+Successfuly Login
+    [Tags]          Todo
+
+    ${payload}          Get Json  ????.json
     
     ${resp}=            Post Product  ${payload}   ${token}     before_remove
     Status Should Be    200     ${resp}
 
-Duplicate Product
-    ${token}            Auth Token  ${user_email}  ${user_pass}
-    ${payload}          Get Json  duplicate.json
-    
-    Post Product  ${payload}   ${token}     before_remove
-    ${resp}=            Post Product  ${payload}   ${token}     ${empty}
-    Status Should Be    409     ${resp}
+Incorrect Password
+    [Tags]          Todo
 
-Empty Title
-    ${token}            Auth Token  ${user_email}  ${user_pass}
-    ${payload}          Get Json  empty_title.json
+    ${payload}          Get Json  ????.json
     
-    ${resp}=            Post Product  ${payload}   ${token}     ${empty}
-    Status Should Be    400     ${resp}
+    ${resp}=            Post Product  ${payload}   ${token}     before_remove
+    Status Should Be    200     ${resp}
 
-Empty Category
-    ${token}            Auth Token  ${user_email}  ${user_pass}
-    ${payload}          Get Json  empty_category.json
-    
-    ${resp}=            Post Product  ${payload}   ${token}     ${empty}
-    Status Should Be    400     ${resp}
-
-Empty Price
-    ${token}            Auth Token  ${user_email}  ${user_pass}
-    ${payload}          Get Json  empty_price.json
-    
-    ${resp}=            Post Product  ${payload}   ${token}     ${empty}
-    Status Should Be    400     ${resp}

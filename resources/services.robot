@@ -4,6 +4,7 @@ Documentation           Chamadas de serviços emcapsuladas
 
 Library             RequestsLibrary
 Library             libs/database.py
+Library             Collections
 
 Resource            helpers.robot
 
@@ -14,7 +15,7 @@ ${user_pass}    pwd123
 
 
 ***Keywords***
-Auth Token
+Set Suite Var Auth Token
     [Arguments]     ${email}    ${password}
 
     Create Session      pixel   ${base_url}
@@ -26,7 +27,10 @@ Auth Token
 
     ${token}            Convert To String   JWT ${resp.json()['token']}
 
-    [Return]            ${token}
+   ## Outra forma de fazer o token
+   # [Return]            ${token}
+
+    Set Suite Variable      ${token}
 
 Post Product
     [Arguments]         ${payload}  ${token}    ${remove}
@@ -39,5 +43,25 @@ Post Product
     &{headers}=         Create Dictionary   Authorization=${token}      Content-Type=application/json
     
     ${resp}=            post Request    pixel     /products       data=${payload}   headers=${headers}
+
+    [Return]             ${resp}
+
+Get Product
+    [Arguments]         ${id}
+
+    Create Session      pixel               ${base_url}
+    &{headers}=         Create Dictionary   Authorization=${token}      Content-Type=application/json
+    
+    ${resp}=            Get Request    pixel     /products/${id}       headers=${headers}
+
+    [Return]             ${resp}
+
+Delete Product
+    [Arguments]         ${id}
+
+    Create Session      pixel               ${base_url}
+    &{headers}=         Create Dictionary   Authorization=${token}      Content-Type=application/json
+    
+    ${resp}=            Delete Request    pixel     /products/${id}       headers=${headers}
 
     [Return]             ${resp}
