@@ -1,0 +1,34 @@
+{
+    "data":[
+        {
+            "title": "Enduro",
+            "category": "Atari",
+            "price": "99.99",
+            "description": "Um jogo sem fim.",
+            "producers": [
+                "Atari"
+            ],
+            "cover": "enduro.jpg"
+        },
+        {
+            "title": "Turbo Game",
+            "category": "Console",
+            "price": "99.99",
+            "description": "Console do Paraguay",
+            "producers": [
+                "Sem Marca"
+            ],
+            "cover": "turbogame.jpg"
+        },
+        {
+            "title": "River Raiv",
+            "category": "Atari",
+            "price": "99.99",
+            "description": "Navinha tiro para todo lado.",
+            "producers": [
+                "Atari"
+            ],
+            "cover": "river-raiv.jpg"
+        }
+    ]
+}

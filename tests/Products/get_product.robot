@@ -26,3 +26,23 @@ Product Not Found
     ${resp}=            Get Product     000
     Status Should Be    404     ${resp}
    
+Get Product List
+    [Tags]      Sucesso
+
+    ${list}=        Get Json        list.json
+    ${items}=       Set Variable    ${list['data']}
+    
+    ##Percorre os itens da lista dentro do data
+    FOR     ${item}     IN      @{items}
+            Post Product  ${item}      ${token}      before_remove
+    END
+
+    ${resp}=        Get Products
+
+    Status Should Be    200     ${resp}
+    ##Validar se uma lista não esta vazia
+    Should Not Be Empty         ${resp.json()['data']}
+    
+    ## Validar o tamanho da lista
+    ${size}=    Get Length      ${resp.json()['data']}
+    Should Be True      ${size} > 0
